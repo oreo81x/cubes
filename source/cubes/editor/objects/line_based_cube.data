@@ -1,0 +1,55 @@
+// ________________________
+// GL_LINES Primitive based
+{
+    glm::vec3( 0.5f,  0.5f,  0.5f),  // upper right  front point 0
+    glm::vec3( 0.5f,  0.5f, -0.5f),  // upper right  depth point 1
+    glm::vec3(-0.5f,  0.5f, -0.5f),  // upper left   depth point 2
+    glm::vec3(-0.5f,  0.5f,  0.5f),  // upper left   front point 3
+    glm::vec3( 0.5f, -0.5f,  0.5f),  // lower right  front point 4
+    glm::vec3( 0.5f, -0.5f, -0.5f),  // lower right  depth point 5
+    glm::vec3(-0.5f, -0.5f, -0.5f),  // lower left   depth point 6
+    glm::vec3(-0.5f, -0.5f,  0.5f)   // lower left   front point 7
+},
+{
+    // upper face
+    0u, 1u,
+    0u, 2u,
+    1u, 2u,
+    0u, 3u,
+    3u, 2u,
+
+    // lower face
+    4u, 5u,
+    4u, 6u,
+    5u, 6u,
+    4u, 7u,
+    7u, 6u,
+
+    // front face
+    0u, 7u,
+    0u, 4u,
+    7u, 4u,
+    0u, 3u,
+    7u, 3u,
+
+    // depth face
+    1u, 5u,
+    1u, 6u,
+    5u, 6u,
+    1u, 2u,
+    6u, 2u,
+
+    // right face
+    0u, 5u,
+    0u, 4u,
+    5u, 4u,
+    0u, 1u,
+    5u, 1u,
+
+    // left face
+    2u, 3u,
+    2u, 6u,
+    3u, 6u,
+    7u, 6u,
+    7u, 3u
+}

@@ -1,0 +1,1 @@
+sh compile.sh && cd output/bin/x86_64-linux-debug && ./cubes-editor && cd ../x86_64-linux-release && ./cubes-editor && cd ../../..

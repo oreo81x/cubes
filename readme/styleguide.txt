@@ -1,0 +1,22 @@
+cubes styleguide
+
+name.folder = lower_snake_case
+name.file   = lower_snake_case
+
+name.macro = UPPER_SNAKE_CASE
+
+name.typedef    = UpperCamelCase
+name.using      = UpperCamelCase
+
+name.function    = lower_snake_case
+name.argument    = lower_snake_case, prefixed by a_
+name.variable    = lower_snake_case, prefixed by g_ if global : s_ if static : m_ if !public member
+
+name.enumeration = UpperCamelCase
+name.enumerator  = UpperCamelCase
+
+name.namespace = lowerCamelCase
+name.structure = UpperCamelCase
+
+guides:
+    - include files in files using it even if (other included files already includes it)
