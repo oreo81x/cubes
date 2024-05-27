@@ -41,7 +41,7 @@ workspace "cubes"
     filter {}
 
     includedirs {
-        "source", "extern"
+        "source", "extern/lib"
     }
 
     warnings "Extra"
@@ -110,4 +110,4 @@ workspace "cubes"
             "editor"
         }
 
-    include "extern/GLFW"
+    include "extern/lib/GLFW"
