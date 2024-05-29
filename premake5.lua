@@ -1,5 +1,5 @@
 workspace "cubes"
-    location "output/build"
+    location "output/build/%{_ACTION}"
 
     targetdir   ("output/bin/"      .. "%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}")
     objdir      ("output/bin-obj/"  .. "%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}/%{prj.name}")
@@ -15,19 +15,13 @@ workspace "cubes"
             os.mkdir("output/bin-obj")
         end
     }
-    
-    platforms {
-        "x86_64", "x86"
-    }
 
     configurations {
         "debug", "release"
     }
 
-    filter "platforms:x86_64"
-        architecture "x86_64"
-    filter "platforms:x86"
-        architecture "x86"
+    architecture "x86_64"
+
     filter "configurations:debug"
         runtime "Debug"
         symbols "On"

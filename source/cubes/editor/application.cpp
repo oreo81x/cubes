@@ -22,8 +22,10 @@
 
 #include <stdexcept>
 #include <iostream>
-#include <string>
 #include <memory>
+#include <string>
+#include <chrono>
+#include <thread>
 
 namespace
 {
@@ -180,7 +182,7 @@ namespace
         {
             glm::ivec2 window_size = glm::ivec2(0, 0);
             glfwGetWindowSize   (a_window, &window_size.x, &window_size.y);
-            glfwSetInputMode    (a_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            glfwSetInputMode    (a_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
             if (first_hold)
             {
@@ -229,6 +231,8 @@ namespace cubes
         {
             update();
             render();
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
 
         return 0;
