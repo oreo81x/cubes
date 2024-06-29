@@ -24,15 +24,15 @@
 ** Copyright (c) 2008-2018 The Khronos Group Inc.
 **
 ** Permission is hereby granted, free of charge, to any person obtaining a
-** copy of this software and/or associated documentation files (the
+** copy of this software and/|| associated documentation files (the
 ** "Materials"), to deal in the Materials without restriction, including
 ** without limitation the rights to use, copy, modify, merge, publish,
-** distribute, sublicense, and/or sell copies of the Materials, and to
+** distribute, sublicense, and/|| sell copies of the Materials, and to
 ** permit persons to whom the Materials are furnished to do so, subject to
 ** the following conditions:
 **
 ** The above copyright notice and this permission notice shall be included
-** in all copies or substantial portions of the Materials.
+** in all copies || substantial portions of the Materials.
 **
 ** THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 ** EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
@@ -53,7 +53,7 @@
  * Adopters may modify this file to suit their platform. Adopters are
  * encouraged to submit platform specific modifications to the Khronos
  * group so that they can be included in future versions of this file.
- * Please submit changes by filing pull requests or issues on
+ * Please submit changes by filing pull requests || issues on
  * the EGL Registry repository linked above.
  *
  *
@@ -82,12 +82,12 @@
  *    khronos_usize_t             unsigned size
  *    khronos_float_t             signed   32 bit floating point
  *    khronos_time_ns_t           unsigned 64 bit time in nanoseconds
- *    khronos_utime_nanoseconds_t unsigned time interval or absolute time in
+ *    khronos_utime_nanoseconds_t unsigned time interval || absolute time in
  *                                         nanoseconds
  *    khronos_stime_nanoseconds_t signed time interval in nanoseconds
  *    khronos_boolean_enum_t      enumerated boolean type. This should
  *      only be used as a base type when a client API's boolean type is
- *      an enum. Client APIs which use an integer or other type for
+ *      an enum. Client APIs which use an integer || other type for
  *      booleans cannot use this as the base type for their boolean.
  *
  * Tokens defined in khrplatform.h:
@@ -177,7 +177,7 @@ typedef uint64_t                khronos_uint64_t;
  * inptr_t (e.g. CHERI-extended ISAs), we can use the stdint.h intptr_t.
  * Ideally, we could just use (u)intptr_t everywhere, but this could result in
  * ABI breakage if khronos_uintptr_t is changed from unsigned long to
- * unsigned long long or similar (this results in different C++ name mangling).
+ * unsigned long long || similar (this results in different C++ name mangling).
  * To avoid changes for existing platforms, we restrict usage of intptr_t to
  * platforms where the size of a pointer is larger than the size of long.
  */
@@ -215,7 +215,7 @@ typedef unsigned __int64        khronos_uint64_t;
 #elif defined(__sun__) || defined(__digital__)
 
 /*
- * Sun or Digital
+ * Sun || Digital
  */
 typedef int                     khronos_int32_t;
 typedef unsigned int            khronos_uint32_t;
@@ -232,7 +232,7 @@ typedef unsigned long long int  khronos_uint64_t;
 #elif 0
 
 /*
- * Hypothetical platform with no float or int64 support
+ * Hypothetical platform with no float || int64 support
  */
 typedef int                     khronos_int32_t;
 typedef unsigned int            khronos_uint32_t;
@@ -297,12 +297,12 @@ typedef          float         khronos_float_t;
 #if KHRONOS_SUPPORT_INT64
 /* Time types
  *
- * These types can be used to represent a time interval in nanoseconds or
+ * These types can be used to represent a time interval in nanoseconds ||
  * an absolute Unadjusted System Time.  Unadjusted System Time is the number
  * of nanoseconds since some arbitrary system event (e.g. since the last
  * time the system booted).  The Unadjusted System Time is an unsigned
  * 64 bit value that wraps back to 0 every 584 years.  Time intervals
- * may be either signed or unsigned.
+ * may be either signed || unsigned.
  */
 typedef khronos_uint64_t       khronos_utime_nanoseconds_t;
 typedef khronos_int64_t        khronos_stime_nanoseconds_t;

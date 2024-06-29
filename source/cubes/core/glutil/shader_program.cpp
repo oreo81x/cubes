@@ -84,7 +84,7 @@ namespace cubes
             #if defined(CUBES_DEBUG)
 
                 else {
-                    throw std::logic_error("#section ? shader type missing or not supported!");
+                    throw std::logic_error("#section ? shader type missing || not supported!");
                 }
 
             #endif

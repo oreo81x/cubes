@@ -1,8 +1,15 @@
 workspace "cubes"
-    location "output/build/%{_ACTION}"
+    location "output/build/%{_TARGET_OS}/%{_ACTION}"
 
-    targetdir   ("output/bin/"      .. "%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}")
-    objdir      ("output/bin-obj/"  .. "%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}/%{prj.name}")
+    externlibdir = "extern/lib/%{cfg.architecture}/%{cfg.system}"
+    externbindir = "extern/bin/%{cfg.architecture}/%{cfg.system}"
+    externobjdir = "extern/obj/%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}/%{prj.name}"
+
+    projectoutdir = "output/bin/%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}"
+    projectobjdir = "output/bin-obj/%{cfg.architecture}-%{cfg.system}-%{cfg.buildcfg}/%{prj.name}"
+
+    targetdir   (projectoutdir)
+    objdir      (projectobjdir)
     
     newaction {
         trigger     = "clean",
@@ -25,6 +32,7 @@ workspace "cubes"
     filter "configurations:debug"
         runtime "Debug"
         symbols "On"
+
     filter "configurations:release"
         runtime "Release"
         optimize "Speed"
@@ -35,20 +43,23 @@ workspace "cubes"
     filter {}
 
     includedirs {
-        "source", "extern/lib"
+        "source", "extern/source"
     }
+
+    libdirs (externlibdir)
+
+    staticruntime "On"
+    systemversion "latest"
 
     warnings "Extra"
     language   "C++"
     cppdialect "C++14"
-    staticruntime "On"
-    systemversion "latest"
 
-    -- IDK what this does
+    -- prefer Fastness over Accuracy
     floatingpoint "Fast"
 
     project "core"
-        kind        "SharedLib"
+        kind        "StaticLib"
         targetname  "cubes-core"
 
         files {
@@ -60,29 +71,26 @@ workspace "cubes"
         }
         
         defines {
-            "CUBES_CORE_API_SHARED", "GLM_ENABLE_EXPERIMENTAL"
+            --"CUBES_CORE_API_SHARED",
+            "GLM_ENABLE_EXPERIMENTAL"
         }
 
     project "editor"
-        kind        "SharedLib"
+        kind        "StaticLib"
         targetname  "cubes-editor"
 
         files {
             "source/cubes/editor/**.inl",
             "source/cubes/editor/**.hpp",
             "source/cubes/editor/**.cpp",
-            "source/cubes/core/**.c",
-            "source/cubes/core/**.h"
+            "source/cubes/editor/**.c",
+            "source/cubes/editor/**.h"
         }
 
         defines {
-            "CUBES_EDITOR_API_SHARED",
-            "CUBES_CORE_API_SHARED",
-            "CUBES_CORE_API_CLIENT"
-        }
-
-        links {
-            "core", "cubes-glfw", "X11"
+            --"CUBES_EDITOR_API_SHARED",
+            --"CUBES_CORE_API_SHARED",
+            --"CUBES_CORE_API_CLIENT"
         }
 
     project "executable"
@@ -94,14 +102,22 @@ workspace "cubes"
         }
 
         defines {
-            "CUBES_EDITOR_API_SHARED",
-            "CUBES_EDITOR_API_CLIENT",
-            "CUBES_CORE_API_SHARED",
-            "CUBES_CORE_API_CLIENT"
+            --"CUBES_EDITOR_API_SHARED",
+            --"CUBES_EDITOR_API_CLIENT"
         }
 
         links {
-            "editor"
+            "editor", "core", "ImGui", "GLFW"
         }
 
-    include "extern/lib/GLFW"
+        filter "system:linux"
+
+            links "X11"
+
+        filter {  }
+
+    include "extern/source/GLFW"
+    include "extern/source/imgui"
+
+workspace "cubes"
+    startproject "executable"

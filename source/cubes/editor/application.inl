@@ -1,9 +1,8 @@
 bool inline select_block()
 {
-    const glm::ivec3 block_pos  = glm::ivec3(m_cubes_center[m_controlled_cube]);
     const glm::ivec3 cursor_pos = glm::ivec3(m_cursor_cube_center);
 
-    if (m_controlled_cube > -1 && cursor_pos == block_pos)
+    if (m_controlled_cube > -1 && cursor_pos == glm::ivec3(m_cubes_center[m_controlled_cube]))
     {
         return true;
     }

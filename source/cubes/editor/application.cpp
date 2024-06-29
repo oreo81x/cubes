@@ -1,12 +1,6 @@
 #include <cubes/editor/application.hpp>
 #include <cubes/editor/callbacks.hpp>
 
-// including cubes imgui module
-#include <cubes/core/imgui/imgui.h>
-#include <cubes/core/imgui/imgui_internal.h>
-#include <cubes/core/imgui/imgui_impl_glfw.h>
-#include <cubes/core/imgui/imgui_impl_opengl3.h>
-
 // including cubes opengl wrapper module
 #include <cubes/core/glutil/framebuffer.hpp>
 #include <cubes/core/glutil/shader_program.hpp>
@@ -14,6 +8,12 @@
 
 // including cubes opengl module
 #include <cubes/core/opengl.hpp>
+
+// including imgui module
+#include <imgui/imgui.h>
+#include <imgui/imgui_internal.h>
+#include <imgui/imgui_impl_glfw.h>
+#include <imgui/imgui_impl_opengl3.h>
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>

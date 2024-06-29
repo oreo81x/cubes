@@ -43,7 +43,7 @@ namespace cubes
         GLFWwindow *m_editor_window = create_editor_window();
         bool        m_fullscreen_on = false;
 
-        OpenGLTexture m_texture_pack = OpenGLTexture("assets/texture_packs/cubes-original.png");
+        OpenGLTexture m_texture_pack = OpenGLTexture("assets/texture_packs/default-pack.png");
         OpenGLFramebuffer m_scene_fb = OpenGLFramebuffer(glm::uvec2(1.0f, 1.0f), 6u);
 
         OpenGLShader m_scene_shader = OpenGLShader(
@@ -65,13 +65,13 @@ namespace cubes
         View m_scene_view =
             View(glm::vec3(2.5f, 2.0f, 2.5f), glm::vec3(0.0f, 0.0f, 0.0f));
 
-        glm::vec3 m_cursor_cube_center  = glm::vec3(0.0f, 0.0f, 0.0f);  // the cursor(, pointer or whatever) cube center
-        glm::vec3 m_cursor_cube_color   = glm::vec3(0.0f, 1.0f, 0.0f);  // the cursor(, pointer or whatever) cube color
+        glm::vec3 m_cursor_cube_center  = glm::vec3(0.0f, 0.0f, 0.0f);  // the cursor(, pointer || whatever) cube center
+        glm::vec3 m_cursor_cube_color   = glm::vec3(0.0f, 1.0f, 0.0f);  // the cursor(, pointer || whatever) cube color
 
         int32_t m_controlled_cube = -1; // controlled object index, -1 if no object controlled
         uint32_t
-            m_cubes_center_vb   = 0u, // vertex buffer that stores the centers(or positions in other words) of placed cubes
-            m_cubes_texture_vb  = 0u; // vertex buffer that stores the texture (virtual handle or id)
+            m_cubes_center_vb   = 0u, // vertex buffer that stores the centers(|| positions in other words) of placed cubes
+            m_cubes_texture_vb  = 0u; // vertex buffer that stores the texture (virtual handle || id)
 
         std::vector<glm::vec3> m_cubes_center;
         std::vector<uint32_t> m_cubes_texture;
@@ -104,7 +104,7 @@ namespace cubes
         void draw_the_scene(); // draws the scene to our custom framebuffer to be rendered on imgui scene window
         void on_imgui_stuff(); // imgui windows and it's elements
 
-        // creates main window or viewport.
+        // creates main window || viewport.
         GLFWwindow *create_editor_window();
 
     private:

@@ -42,7 +42,7 @@ namespace cubes
     {
         const glm::vec3 new_orient = glm::rotate(m_orient, a_rotate.x, rtward());
 
-        if (!(glm::angle(new_orient, g_global_upward) <= glm::radians(5.0f) or glm::angle(new_orient, -g_global_upward) <= glm::radians(5.0f)))
+        if (!(glm::angle(new_orient, g_global_upward) <= glm::radians(5.0f) || glm::angle(new_orient, -g_global_upward) <= glm::radians(5.0f)))
         {
             m_orient = new_orient;
         }
